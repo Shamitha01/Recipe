@@ -13,7 +13,7 @@ export default {
           light: "#5eead4",        // teal-300
         },
         base: {
-          bg: "#f9fafb",           // gray-50
+          bg: "#f3f4f6",           // gray-100
           text: "#1f2937",         // gray-800
           muted: "#6b7280",        // gray-500
         },
