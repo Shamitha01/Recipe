@@ -3,7 +3,6 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-
   ],
   theme: {
     extend: {
@@ -24,8 +23,10 @@ export default {
         },
         danger: "#dc2626",         // red-600
       },
+      boxShadow: {
+        'teal': '0 2px 10px rgba(20, 184, 166, 0.3)',
+      },
     },
   },
   plugins: [],
 }
-
