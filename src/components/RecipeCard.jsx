@@ -22,7 +22,7 @@ export default function RecipeCard({ recipe }) {
 
   return (
     <div
-      className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer"
+      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer"
       onClick={goToDetails}
     >
       <img
@@ -33,27 +33,29 @@ export default function RecipeCard({ recipe }) {
 
       <div className="flex justify-between items-start">
         <div>
-          <h2 className="text-lg font-semibold">{recipe.title}</h2>
-          <p className="text-sm text-base-muted">{recipe.category}</p>
+          <h2 className="text-lg font-semibold text-base-text dark:text-white">
+            {recipe.title}
+          </h2>
+          <p className="text-sm text-base-muted dark:text-gray-400">
+            {recipe.category}
+          </p>
         </div>
 
         <div className="flex space-x-3 text-lg">
-          {/* Favorite icon */}
           <button
             onClick={toggleLike}
             title="Add to Favorites"
             className={`transition ${
-              liked ? "text-brand" : "text-black"
+              liked ? "text-brand" : "text-black dark:text-white"
             }`}
           >
             {liked ? <FaHeart /> : <FaRegHeart />}
           </button>
 
-          {/* Edit icon */}
           <button
             onClick={goToEdit}
             title="Edit Recipe"
-            className="text-black hover:text-brand transition"
+            className="text-black dark:text-white hover:text-brand transition"
           >
             <FaEdit />
           </button>
