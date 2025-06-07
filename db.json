@@ -1,54 +1,132 @@
 {
   "recipes": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Spaghetti Bolognese",
       "image": "https://via.placeholder.com/300",
-      "ingredients": ["Spaghetti", "Ground beef", "Tomato sauce", "Onions", "Garlic"],
-      "steps": ["Boil pasta", "Cook beef", "Add sauce", "Mix all"],
-      "tags": ["italian", "dinner"],
+      "ingredients": [
+        "Spaghetti",
+        "Ground beef",
+        "Tomato sauce",
+        "Onions",
+        "Garlic"
+      ],
+      "steps": [
+        "Boil pasta",
+        "Cook beef",
+        "Add sauce",
+        "Mix all"
+      ],
+      "tags": [
+        "italian",
+        "dinner"
+      ],
       "category": "Main Course",
-      "cookTime": 40
+      "cookTime": 40,
+      "instructions": "Hello"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Avocado Toast",
       "image": "https://via.placeholder.com/300",
-      "ingredients": ["Bread", "Avocado", "Lemon", "Salt", "Chili flakes"],
-      "steps": ["Toast bread", "Mash avocado", "Spread and season"],
-      "tags": ["breakfast", "vegan"],
+      "ingredients": [
+        "Bread",
+        "Avocado",
+        "Lemon",
+        "Salt",
+        "Chili flakes"
+      ],
+      "steps": [
+        "Toast bread",
+        "Mash avocado",
+        "Spread and season"
+      ],
+      "tags": [
+        "breakfast",
+        "vegan"
+      ],
       "category": "Breakfast",
       "cookTime": 10
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Chicken Curry",
       "image": "https://via.placeholder.com/300",
-      "ingredients": ["Chicken", "Onions", "Tomatoes", "Spices", "Yogurt"],
-      "steps": ["Marinate chicken", "Cook onions", "Add tomatoes and spices", "Add chicken and simmer"],
-      "tags": ["indian", "spicy"],
+      "ingredients": [
+        "Chicken",
+        "Onions",
+        "Tomatoes",
+        "Spices",
+        "Yogurt"
+      ],
+      "steps": [
+        "Marinate chicken",
+        "Cook onions",
+        "Add tomatoes and spices",
+        "Add chicken and simmer"
+      ],
+      "tags": [
+        "indian",
+        "spicy"
+      ],
       "category": "Main Course",
       "cookTime": 60
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Chocolate Mug Cake",
       "image": "https://via.placeholder.com/300",
-      "ingredients": ["Flour", "Cocoa powder", "Sugar", "Milk", "Baking powder"],
-      "steps": ["Mix dry ingredients", "Add milk", "Microwave for 1.5 mins"],
-      "tags": ["dessert", "quick"],
+      "ingredients": [
+        "Flour",
+        "Cocoa powder",
+        "Sugar",
+        "Milk",
+        "Baking powder"
+      ],
+      "steps": [
+        "Mix dry ingredients",
+        "Add milk",
+        "Microwave for 1.5 mins"
+      ],
+      "tags": [
+        "dessert",
+        "quick"
+      ],
       "category": "Dessert",
       "cookTime": 5
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Greek Salad",
       "image": "https://via.placeholder.com/300",
-      "ingredients": ["Cucumber", "Tomatoes", "Feta cheese", "Olives", "Olive oil"],
-      "steps": ["Chop vegetables", "Add cheese and olives", "Drizzle with olive oil"],
-      "tags": ["healthy", "salad"],
+      "ingredients": [
+        "Cucumber",
+        "Tomatoes",
+        "Feta cheese",
+        "Olives",
+        "Olive oil"
+      ],
+      "steps": [
+        "Chop vegetables",
+        "Add cheese and olives",
+        "Drizzle with olive oil"
+      ],
+      "tags": [
+        "healthy",
+        "salad"
+      ],
       "category": "Appetizer",
       "cookTime": 15
+    },
+    {
+      "id": "2f78",
+      "title": "Chitranna",
+      "category": "Main course",
+      "image": "",
+      "ingredients": [
+        "Rice"
+      ],
+      "instructions": "My favrouite"
     }
   ]
 }
