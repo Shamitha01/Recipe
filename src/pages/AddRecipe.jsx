@@ -1,24 +1,10 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getRecipe, updateRecipe } from "../services/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addRecipe } from "../services/api";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export default function EditRecipe() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-
-  const {
-    data: recipe,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["recipe", id],
-    queryFn: () => getRecipe(id),
-  });
-
+export default function AddRecipe() {
   const {
     register,
     handleSubmit,
@@ -26,46 +12,26 @@ export default function EditRecipe() {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    if (recipe) {
-      reset({
-        ...recipe,
-        ingredients: recipe.ingredients?.join(", "),
-      });
-    }
-  }, [recipe, reset]);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
     mutationFn: (data) =>
-      updateRecipe(id, {
+      addRecipe({
         ...data,
         ingredients: data.ingredients.split(",").map((i) => i.trim()),
       }),
     onSuccess: () => {
-      toast.success("Recipe updated successfully");
+      toast.success("Recipe added successfully");
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
-      navigate(`/recipes/${id}`);
+      navigate("/recipes");
     },
-    onError: () => toast.error("Failed to update recipe"),
+    onError: () => toast.error("Failed to add recipe"),
   });
-
-  if (isLoading) {
-    return (
-      <div className="text-center text-base-muted py-10">Loading...</div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <p className="text-center text-danger font-semibold py-10">
-        Error loading recipe.
-      </p>
-    );
-  }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-bold text-brand mb-6">Edit Recipe</h1>
+      <h1 className="text-2xl font-bold text-brand mb-6">Add Recipe</h1>
 
       <form
         onSubmit={handleSubmit((data) => mutate(data))}
@@ -91,11 +57,13 @@ export default function EditRecipe() {
             className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.category && (
-            <p className="text-danger text-sm mt-1">{errors.category.message}</p>
+            <p className="text-danger text-sm mt-1">
+              {errors.category.message}
+            </p>
           )}
         </div>
 
-        {/* Image */}
+        {/* Image URL */}
         <div>
           <label className="block font-medium mb-1">Image URL</label>
           <input
@@ -113,7 +81,9 @@ export default function EditRecipe() {
             Ingredients (comma separated)
           </label>
           <input
-            {...register("ingredients", { required: "Ingredients are required" })}
+            {...register("ingredients", {
+              required: "Ingredients are required",
+            })}
             className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.ingredients && (
@@ -147,12 +117,12 @@ export default function EditRecipe() {
             disabled={isPending}
             className="bg-brand text-white px-6 py-2 rounded hover:bg-brand-dark transition"
           >
-            {isPending ? "Saving..." : "Update Recipe"}
+            {isPending ? "Adding..." : "Add Recipe"}
           </button>
 
           <button
             type="button"
-            onClick={() => navigate(`/recipes/${id}`)}
+            onClick={() => navigate("/recipes")}
             className="border border-gray-300 text-base-text px-6 py-2 rounded hover:bg-gray-100 transition"
           >
             Cancel

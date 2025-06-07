@@ -50,9 +50,7 @@ export default function EditRecipe() {
   });
 
   if (isLoading) {
-    return (
-      <div className="text-center text-base-muted py-10">Loading...</div>
-    );
+    return <div className="text-center text-base-muted py-10">Loading...</div>;
   }
 
   if (isError) {
@@ -91,11 +89,13 @@ export default function EditRecipe() {
             className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.category && (
-            <p className="text-danger text-sm mt-1">{errors.category.message}</p>
+            <p className="text-danger text-sm mt-1">
+              {errors.category.message}
+            </p>
           )}
         </div>
 
-        {/* Image */}
+        {/* Image URL */}
         <div>
           <label className="block font-medium mb-1">Image URL</label>
           <input
@@ -113,7 +113,9 @@ export default function EditRecipe() {
             Ingredients (comma separated)
           </label>
           <input
-            {...register("ingredients", { required: "Ingredients are required" })}
+            {...register("ingredients", {
+              required: "Ingredients are required",
+            })}
             className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.ingredients && (
