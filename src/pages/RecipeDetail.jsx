@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getRecipe } from "../services/api";
-import { useState } from "react";
 import { FaHeart, FaRegHeart, FaEdit } from "react-icons/fa";
+import { useState } from "react";
 
 export default function RecipeDetails() {
   const { id } = useParams();
@@ -18,85 +18,71 @@ export default function RecipeDetails() {
     queryFn: () => getRecipe(id),
   });
 
-  if (isLoading)
+  if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-[50vh]">
-        <div className="w-12 h-12 border-4 border-brand border-t-transparent rounded-full animate-spin" />
+      <div className="text-center text-base-muted dark:text-base-darkMuted py-10">
+        Loading...
       </div>
     );
+  }
 
-  if (isError)
+  if (isError || !recipe) {
     return (
-      <p className="text-center text-danger font-semibold py-10">
+      <p className="text-center text-danger dark:text-red-500 font-semibold py-10">
         Error loading recipe.
       </p>
     );
-
-  const toggleLike = () => setLiked((prev) => !prev);
-  const goToEdit = () => navigate(`/edit-recipe/${recipe.id}`);
+  }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 space-y-6">
-      {/* Title, Category, and Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-brand mb-1">
-            {recipe.title}
-          </h1>
-          <p className="text-base-muted text-sm">{recipe.category}</p>
-        </div>
+    <div className="max-w-2xl mx-auto px-4 py-10 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText rounded shadow-teal dark:shadow-none">
+      <h1 className="text-3xl font-bold text-brand mb-1">{recipe.title}</h1>
+      <p className="text-base-muted dark:text-base-darkMuted mb-4">
+        {recipe.category}
+      </p>
 
-        <div className="flex items-center gap-4 text-lg">
-          <button
-            onClick={toggleLike}
-            title="Add to Favorites"
-            className={`transition ${
-              liked ? "text-brand" : "text-black"
-            }`}
-          >
-            {liked ? <FaHeart /> : <FaRegHeart />}
-          </button>
+      <div className="flex items-center space-x-4 mb-6 text-lg">
+        <button
+          onClick={() => setLiked((prev) => !prev)}
+          className={`transition ${
+            liked
+              ? "text-brand"
+              : "text-black hover:text-brand dark:text-white dark:hover:text-brand"
+          }`}
+        >
+          {liked ? <FaHeart /> : <FaRegHeart />}
+        </button>
 
-          <button
-            onClick={goToEdit}
-            title="Edit Recipe"
-            className="text-black hover:text-brand transition"
-          >
-            <FaEdit />
-          </button>
-        </div>
+        <button
+          onClick={() => navigate(`/edit-recipe/${recipe.id}`)}
+          title="Edit Recipe"
+          className="text-black dark:text-white hover:text-brand dark:hover:text-brand transition"
+        >
+          <FaEdit />
+        </button>
       </div>
 
-      {/* Image */}
-      {recipe.image && (
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          className="w-full rounded shadow-sm"
-        />
-      )}
+      <img
+        src={recipe.image}
+        alt={recipe.title}
+        className="w-full h-60 object-cover rounded mb-6"
+      />
 
-      {/* Ingredients */}
-      <div>
-        <h2 className="text-xl font-semibold text-base-text mb-2">
-          Ingredients
-        </h2>
-        <ul className="list-disc list-inside space-y-1 text-base-muted">
-          {recipe.ingredients?.map((ing, i) => (
-            <li key={i}>{ing}</li>
-          ))}
-        </ul>
-      </div>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+        Ingredients
+      </h3>
+      <ul className="list-disc list-inside space-y-1 text-base-muted dark:text-base-darkMuted mb-6">
+        {recipe.ingredients.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
 
-      {/* Instructions */}
-      <div>
-        <h2 className="text-xl font-semibold text-base-text mb-2">
-          Instructions
-        </h2>
-        <p className="text-base-muted whitespace-pre-line leading-relaxed">
-          {recipe.instructions}
-        </p>
-      </div>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+        Instructions
+      </h3>
+      <p className="text-base-muted dark:text-base-darkMuted">
+        {recipe.instructions}
+      </p>
     </div>
   );
 }

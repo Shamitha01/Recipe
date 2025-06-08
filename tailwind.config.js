@@ -21,6 +21,7 @@ export default {
         danger: "#dc2626",
       },
       boxShadow: {
+        teal: "0 0 10px rgba(20,184,166,0.25)",
         tealDownward: "0 4px 6px -1px rgba(20,184,166,0.2)",
         tealUpward: "0 -4px 6px -1px rgba(20,184,166,0.2)", // ✅ lighter, subtle shadow
         dark: "0 2px 6px rgba(0,0,0,0.5)",

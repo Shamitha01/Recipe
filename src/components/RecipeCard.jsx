@@ -22,7 +22,7 @@ export default function RecipeCard({ recipe }) {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer"
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-teal dark:shadow-none p-4 hover:shadow-lg transition cursor-pointer"
       onClick={goToDetails}
     >
       <img

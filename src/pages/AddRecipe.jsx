@@ -30,7 +30,7 @@ export default function AddRecipe() {
   });
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <div className="max-w-2xl mx-auto px-4 py-10 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText rounded shadow-teal dark:shadow-none">
       <h1 className="text-2xl font-bold text-brand mb-6">Add Recipe</h1>
 
       <form
@@ -42,10 +42,12 @@ export default function AddRecipe() {
           <label className="block font-medium mb-1">Title</label>
           <input
             {...register("title", { required: "Title is required" })}
-            className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.title && (
-            <p className="text-danger text-sm mt-1">{errors.title.message}</p>
+            <p className="text-danger text-sm mt-1 dark:text-red-500">
+              {errors.title.message}
+            </p>
           )}
         </div>
 
@@ -54,10 +56,10 @@ export default function AddRecipe() {
           <label className="block font-medium mb-1">Category</label>
           <input
             {...register("category", { required: "Category is required" })}
-            className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.category && (
-            <p className="text-danger text-sm mt-1">
+            <p className="text-danger text-sm mt-1 dark:text-red-500">
               {errors.category.message}
             </p>
           )}
@@ -67,11 +69,13 @@ export default function AddRecipe() {
         <div>
           <label className="block font-medium mb-1">Image URL</label>
           <input
-            {...register("image", { required: "Image URL is required" })}
-            className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
+            {...register("image", { required: "Image is required" })}
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
-          {errors.image && (
-            <p className="text-danger text-sm mt-1">{errors.image.message}</p>
+          {errors.category && (
+            <p className="text-danger text-sm mt-1 dark:text-red-500">
+              {errors.image.message}
+            </p>
           )}
         </div>
 
@@ -84,10 +88,10 @@ export default function AddRecipe() {
             {...register("ingredients", {
               required: "Ingredients are required",
             })}
-            className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.ingredients && (
-            <p className="text-danger text-sm mt-1">
+            <p className="text-danger text-sm mt-1 dark:text-red-500">
               {errors.ingredients.message}
             </p>
           )}
@@ -101,10 +105,10 @@ export default function AddRecipe() {
               required: "Instructions are required",
             })}
             rows={6}
-            className="w-full border border-gray-300 focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-base-text dark:text-base-darkText focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none px-3 py-2 rounded"
           />
           {errors.instructions && (
-            <p className="text-danger text-sm mt-1">
+            <p className="text-danger text-sm mt-1 dark:text-red-500">
               {errors.instructions.message}
             </p>
           )}
@@ -123,7 +127,7 @@ export default function AddRecipe() {
           <button
             type="button"
             onClick={() => navigate(-1)}
-            className="border border-gray-300 text-base-text px-6 py-2 rounded hover:bg-gray-100 transition"
+            className="bg-brand text-white px-6 py-2 rounded hover:bg-brand-dark transition"
           >
             Cancel
           </button>
