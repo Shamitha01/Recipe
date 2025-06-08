@@ -24,7 +24,7 @@ export default function AddRecipe() {
     onSuccess: () => {
       toast.success("Recipe added successfully");
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
-      navigate("/recipes");
+      navigate(-1);
     },
     onError: () => toast.error("Failed to add recipe"),
   });
@@ -122,7 +122,7 @@ export default function AddRecipe() {
 
           <button
             type="button"
-            onClick={() => navigate("/recipes")}
+            onClick={() => navigate(-1)}
             className="border border-gray-300 text-base-text px-6 py-2 rounded hover:bg-gray-100 transition"
           >
             Cancel

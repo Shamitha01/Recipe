@@ -44,7 +44,7 @@ export default function EditRecipe() {
     onSuccess: () => {
       toast.success("Recipe updated successfully");
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
-      navigate(`/recipes/${id}`);
+      navigate(-1);
     },
     onError: () => toast.error("Failed to update recipe"),
   });
@@ -154,7 +154,7 @@ export default function EditRecipe() {
 
           <button
             type="button"
-            onClick={() => navigate(`/recipes/${id}`)}
+            onClick={() => navigate(-1)}
             className="border border-gray-300 text-base-text px-6 py-2 rounded hover:bg-gray-100 transition"
           >
             Cancel
