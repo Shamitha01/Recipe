@@ -55,7 +55,7 @@ export default function RecipeCard({ recipe }) {
           <button
             onClick={goToEdit}
             title="Edit Recipe"
-            className="text-black dark:text-white hover:text-brand transition"
+            className="text-black dark:text-white hover:text-brand dark:hover:text-brand transition"
           >
             <FaEdit />
           </button>

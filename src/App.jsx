@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     // Make this the main container that fills the screen
-    <div className="flex flex-col min-h-screen bg-white text-black">
+    <div className="flex flex-col min-h-screen dark:bg-base-darkBg dark:text-base-darkText bg-white text-black">
       <Navbar />
       <AppRoutes />
       <Footer />

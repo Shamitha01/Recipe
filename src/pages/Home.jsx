@@ -9,8 +9,9 @@ export default function Home() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand mb-4">
           Welcome to Recipe Book
         </h1>
-        <p className="text-base text-base-muted mb-6">
-          Discover, add, and manage your favorite recipes — fast and beautifully.
+        <p className="text-base-muted mb-6">
+          Discover, add, and manage your favorite recipes — fast and
+          beautifully.
         </p>
         <button
           onClick={() => navigate("/recipes")}
