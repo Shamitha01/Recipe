@@ -3,13 +3,14 @@
 import Navbar from "./components/Navbar";
 import AppRoutes from "./router/AppRoutes";
 import { Toaster } from "react-hot-toast";
-
+import Footer from "./components/Footer";
 export default function App() {
   return (
     // Make this the main container that fills the screen
     <div className="flex flex-col min-h-screen bg-white text-black">
       <Navbar />
       <AppRoutes />
+      <Footer />
       <Toaster
         position="top-center"
         toastOptions={{
