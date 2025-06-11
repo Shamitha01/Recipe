@@ -3,20 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { getRecipe } from "../services/api";
 import { FaHeart, FaRegHeart, FaEdit } from "react-icons/fa";
 import { useState } from "react";
+import { useRecipe } from "../hooks/useRecipe";
 
 export default function RecipeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
 
-  const {
-    data: recipe,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["recipe", id],
-    queryFn: () => getRecipe(id),
-  });
+  const { data: recipe, isLoading, isError } = useRecipe(id);
 
   if (isLoading) {
     return (

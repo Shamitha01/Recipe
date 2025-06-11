@@ -4,21 +4,13 @@ import { useForm } from "react-hook-form";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getRecipe, updateRecipe } from "../services/api";
 import toast from "react-hot-toast";
+import { useRecipe } from "../hooks/useRecipe";
 
 export default function EditRecipe() {
   const { id } = useParams();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
-  const {
-    data: recipe,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["recipe", id],
-    queryFn: () => getRecipe(id),
-  });
-
+  const { data: recipe, isLoading, isError } = useRecipe(id);
   const {
     register,
     handleSubmit,
